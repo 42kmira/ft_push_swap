@@ -43,7 +43,15 @@ CHK_OBJS = $(addsuffix .o, $(CHK_FILES))
 PUSH_SWAP_OBJS = $(addsuffix .o, $(PUSH_SWAP_FILES))
 
 
-all: common
+all: common $(NAME1) $(NAME2)
 
 common:
 	gcc -c $(FLAGS) $(INCLUDES) $(COMMON_C_FILES)
+
+$(NAME1):
+	gcc -c $(FLAGS) $(INCLUDES) $(CHK_C_FILES)
+	gcc -o $(NAME1) $(FLAGS) $(INCLUDES) $(COMMON_OBJS) $(CHK_OBJS)
+
+$(NAME2):
+	gcc -c $(FLAGS) $(INCLUDES) $(CHK_C_FILES)
+	gcc -o $(NAME2) $(FLAGS) $(INCLUDES) $(COMMON_OBJS) $(PUSH_SWAP_OBJS)
