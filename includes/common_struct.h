@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   common.h                                           :+:      :+:    :+:   */
+/*   common_struct.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/02 16:48:07 by marvin            #+#    #+#             */
-/*   Updated: 2019/12/05 12:30:27 by kmira            ###   ########.fr       */
+/*   Created: 2019/12/05 11:21:57 by kmira             #+#    #+#             */
+/*   Updated: 2019/12/05 12:29:39 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMON_H
-# define COMMON_H
+#ifndef COMMON_STRUCT_H
+# define COMMON_STRUCT_H
 
-# include <stddef.h>
-# include <stdlib.h>
+typedef	struct		s_node
+{
+	int				value;
+	struct	s_node	*next;
+}					t_node;
 
-# include "common_struct.h"
-
-void	comm_test(char *str);
+typedef	struct		s_stack
+{
+	struct	s_node	*top;
+	int				count;
+}					t_stack;
 
 #endif
+
