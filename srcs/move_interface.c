@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   common_struct.h                                    :+:      :+:    :+:   */
+/*   move_interface.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 11:21:57 by kmira             #+#    #+#             */
-/*   Updated: 2019/12/21 20:28:38 by xinu             ###   ########.fr       */
+/*   Updated: 2019/12/21 18:04:58 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMON_STRUCT_H
-# define COMMON_STRUCT_H
+#include "common.h"
 
-typedef	struct		s_node
+int	counter_interface(int operation, int value)
 {
-	int				value;
-	struct	s_node	*next;
-	// struct	s_node	*prev;
-}					t_node;
+	static int	counter;
 
-typedef	struct		s_stack
+	if (operation == ADD)
+		counter += value;
+	return (counter);
+}
+
+int	add_move_counter(void)
 {
-	struct	s_node	*top;
-	struct	s_node	*last;
-	int				count;
-}					t_stack;
+	int	result;
+	result = counter_interface(ADD, 1);
+	return (result);
+}
 
-#endif
-
+int	subtract_move_counter(void)
+{
+	int	result;
+	result = counter_interface(ADD, -1);
+	return (result);
+}
