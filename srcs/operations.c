@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:40:47 by kmira             #+#    #+#             */
-/*   Updated: 2019/12/21 18:23:22 by xinu             ###   ########.fr       */
+/*   Updated: 2020/01/17 01:12:04 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,52 @@
 
 void	sa(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node	*third;
-	t_node	*tmp;
+	t_node	*first;
+	t_node	*second;
+	t_node	*last;
 
-	if (stack_a->count <= 1)
-	{
-		printf(RED"Not enough elements for this operation\n"COLOR_RESET);
+	if (stack_a == NULL || stack_a->head == NULL)
 		return ;
-	}
-	tmp = stack_a->top;
-	third = (tmp->next)->next;
-	stack_a->top = tmp->next;
-	stack_a->top->next = tmp;
-	tmp->next = third;
+	first = stack_a->head;
+	if (is_only_node(first))
+		return ;
+	second = first->next;
+	last = first->prev;
+
+	last->next = second;
+
+	first->next = second->next;
+	first->prev = second;
+
+	second->prev = last;
+	second->next = first;
 	add_move_counter();
-	(void)stack_a;
 	(void)stack_b;
 }
 
 void	sb(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node	*third;
-	t_node	*tmp;
+	t_node	*first;
+	t_node	*second;
+	t_node	*last;
 
-	if (stack_b->count <= 1)
-	{
-		printf(RED"Not enough elements for this operation\n"COLOR_RESET);
+	if (stack_b == NULL || stack_b->head == NULL)
 		return ;
-	}
-	tmp = stack_b->top;
-	third = (tmp->next)->next;
-	stack_b->top = tmp->next;
-	stack_b->top->next = tmp;
-	tmp->next = third;
+	first = stack_b->head;
+	if (is_only_node(first))
+		return ;
+	second = first->next;
+	last = first->prev;
+
+	last->next = second;
+
+	first->next = second->next;
+	first->prev = second;
+
+	second->prev = last;
+	second->next = first;
 	add_move_counter();
 	(void)stack_a;
-	(void)stack_b;
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
@@ -59,28 +69,26 @@ void	ss(t_stack *stack_a, t_stack *stack_b)
 	sb(stack_a, stack_b);
 	subtract_move_counter();
 	add_move_counter();
-	(void)stack_a;
-	(void)stack_b;
 }
 
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node	*elem;
+	// t_node	*elem;
 
-	elem = pop(stack_b);
-	insert_by_node(stack_a, elem);
-	(void)stack_a;
-	(void)stack_b;
+	// elem = pop(stack_b);
+	// insert_by_node(stack_a, elem);
+	// (void)stack_a;
+	// (void)stack_b;
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node	*elem;
+	// t_node	*elem;
 
-	elem = pop(stack_a);
-	insert_by_node(stack_b, elem);
-	(void)stack_a;
-	(void)stack_b;
+	// elem = pop(stack_a);
+	// insert_by_node(stack_b, elem);
+	// (void)stack_a;
+	// (void)stack_b;
 }
 
 void	ra(t_stack *stack_a, t_stack *stack_b)
