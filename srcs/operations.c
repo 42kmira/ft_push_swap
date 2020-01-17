@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:40:47 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/17 02:41:17 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/17 03:36:15 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	sa(t_stack *stack_a, t_stack *stack_b)
 		return ;
 	second = first->next;
 	last = first->prev;
+
 	last->next = second;
+	if (last->prev == second)
+		last->prev = first;
 	first->next = second->next;
 	first->prev = second;
 	second->prev = last;
@@ -49,6 +52,8 @@ void	sb(t_stack *stack_a, t_stack *stack_b)
 	second = first->next;
 	last = first->prev;
 	last->next = second;
+	if (last->prev == second)
+		last->prev = first;
 	first->next = second->next;
 	first->prev = second;
 	second->prev = last;

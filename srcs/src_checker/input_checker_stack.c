@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 20:29:57 by xinu              #+#    #+#             */
-/*   Updated: 2020/01/17 01:46:55 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/17 03:15:58 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,14 @@ t_stack	*create_stack_from_list(char **args)
 	i = 0;
 	result = init_stack();
 	while (args[i] != NULL)
+		i++;
+	if (args[i] == NULL)
+		i--;
+	while (i >= 0)
 	{
 		value = mini_atoi(args[i]);
 		insert_by_value(result, value);
-		i++;
+		i--;
 	}
 	return (result);
 }
