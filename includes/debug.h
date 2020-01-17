@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:01:18 by xinu              #+#    #+#             */
-/*   Updated: 2019/12/21 19:27:53 by xinu             ###   ########.fr       */
+/*   Updated: 2020/01/17 01:50:50 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 # include <stdio.h>
 
 void	print_stack(t_stack *stack);
+void	print_stack_reverse(t_stack *stack);
 
 #endif

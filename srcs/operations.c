@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:40:47 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/17 01:46:57 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/17 02:41:17 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,12 @@ void	sa(t_stack *stack_a, t_stack *stack_b)
 		return ;
 	second = first->next;
 	last = first->prev;
-
 	last->next = second;
-
 	first->next = second->next;
 	first->prev = second;
-
 	second->prev = last;
 	second->next = first;
+	stack_a->head = second;
 	add_move_counter();
 	(void)stack_b;
 }
@@ -50,14 +48,12 @@ void	sb(t_stack *stack_a, t_stack *stack_b)
 		return ;
 	second = first->next;
 	last = first->prev;
-
 	last->next = second;
-
 	first->next = second->next;
 	first->prev = second;
-
 	second->prev = last;
 	second->next = first;
+	stack_b->head = second;
 	add_move_counter();
 	(void)stack_a;
 }
@@ -73,57 +69,74 @@ void	ss(t_stack *stack_a, t_stack *stack_b)
 
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
-	// t_node	*elem;
+	t_node	*elem;
 
-	// elem = pop(stack_b);
-	// insert_by_node(stack_a, elem);
+	elem = pop(stack_b);
+	if (elem != NULL)
+		insert_by_node(stack_a, elem);
+	add_move_counter();
 	(void)stack_a;
 	(void)stack_b;
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
-	// t_node	*elem;
+	t_node	*elem;
 
-	// elem = pop(stack_a);
-	// insert_by_node(stack_b, elem);
+	elem = pop(stack_a);
+	if (elem != NULL)
+		insert_by_node(stack_b, elem);
+	add_move_counter();
 	(void)stack_a;
 	(void)stack_b;
 }
 
 void	ra(t_stack *stack_a, t_stack *stack_b)
 {
-	(void)stack_a;
+	if (stack_a == NULL || stack_a->head == NULL)
+		return ;
+	stack_a->head = stack_a->head->next;
 	(void)stack_b;
 }
 
 void	rb(t_stack *stack_a, t_stack *stack_b)
 {
+	if (stack_b == NULL || stack_b->head == NULL)
+		return ;
+	stack_b->head = stack_b->head->next;
 	(void)stack_a;
-	(void)stack_b;
 }
 
 void	rr(t_stack *stack_a, t_stack *stack_b)
 {
-	(void)stack_a;
-	(void)stack_b;
+	ra(stack_a, stack_b);
+	subtract_move_counter();
+	rb(stack_a, stack_b);
+	subtract_move_counter();
+	add_move_counter();
 }
 
 void	rra(t_stack *stack_a, t_stack *stack_b)
 {
-	(void)stack_a;
+	if (stack_a == NULL || stack_a->head == NULL)
+		return ;
+	stack_a->head = stack_a->head->prev;
 	(void)stack_b;
 }
 
 void	rrb(t_stack *stack_a, t_stack *stack_b)
 {
+	if (stack_b == NULL || stack_b->head == NULL)
+		return ;
+	stack_b->head = stack_b->head->prev;
 	(void)stack_a;
-	(void)stack_b;
 }
 
 void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
-	(void)stack_a;
-	(void)stack_b;
+	rra(stack_a, stack_b);
+	subtract_move_counter();
+	rrb(stack_a, stack_b);
+	subtract_move_counter();
+	add_move_counter();
 }
-

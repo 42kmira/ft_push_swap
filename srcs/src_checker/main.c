@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:40:40 by marvin            #+#    #+#             */
-/*   Updated: 2019/12/21 20:42:31 by xinu             ###   ########.fr       */
+/*   Updated: 2020/01/17 02:45:22 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,17 @@ int		main(int aa, char **args)
 	}
 	stack_a = create_stack_from_list(&args[1]);
 
-	// insert_by_value(stack_b, 12);
-	// insert_by_value(stack_b, 11);
+	insert_by_value(stack_b, 12);
+	insert_by_value(stack_b, 11);
 
 	printf(PURPLE"Stack_A\n"COLOR_RESET);
 	print_stack(stack_a);
-	// printf(PURPLE"Stack_B\n"COLOR_RESET);
-	// print_stack(stack_b);
+
+	// printf(PURPLE"Stack_A reversed\n"COLOR_RESET);
+	// print_stack_reverse(stack_a);
+
+	printf(PURPLE"Stack_B\n"COLOR_RESET);
+	print_stack(stack_b);
 
 	// sa(stack_a, stack_b);
 	// printf(PURPLE"Stack_A\n"COLOR_RESET);
@@ -44,19 +48,28 @@ int		main(int aa, char **args)
 	// printf(BOLDGREEN"Doing OP: pa\n");
 
 	// pa(stack_a, stack_b);
-	// sb(stack_a, stack_b);
+	// // sb(stack_a, stack_b);
 	// printf(PURPLE"Stack_A\n"COLOR_RESET);
 	// print_stack(stack_a);
 	// printf(PURPLE"Stack_B\n"COLOR_RESET);
 	// print_stack(stack_b);
 
-	// printf(BOLDGREEN"Doing OP: pb\n");
-	// pb(stack_a, stack_b);
-	// printf(PURPLE"Stack_A\n"COLOR_RESET);
-	// print_stack(stack_a);
-	// printf(PURPLE"Stack_B\n"COLOR_RESET);
-	// print_stack(stack_b);
-	(void)stack_b;
+	printf(BOLDGREEN"Doing OP: pb\n");
+	pb(stack_a, stack_b);
+	rb(stack_a, stack_b);
+	pb(stack_a, stack_b);
+	pb(stack_a, stack_b);
+	rb(stack_a, stack_b);
+	ra(stack_a, stack_b);
+	printf(PURPLE"Stack_A\n"COLOR_RESET);
+	print_stack(stack_a);
+	printf(PURPLE"Stack_B\n"COLOR_RESET);
+	print_stack(stack_b);
+
+	printf(PURPLE"Stack_A reversed\n"COLOR_RESET);
+	print_stack_reverse(stack_a);
+	printf(PURPLE"Stack_B reversed\n"COLOR_RESET);
+	print_stack_reverse(stack_b);
 	(void)aa;
 	return (0);
 }

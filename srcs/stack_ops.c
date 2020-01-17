@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:04:14 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/17 01:33:07 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/17 02:01:04 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	insert_by_value(t_stack *stack, int value)
 
 		last->next = new_elem;
 		first->prev = new_elem;
+
+		stack->head = new_elem;
 	}
 }
 
@@ -98,6 +100,8 @@ void	insert_by_node(t_stack *stack, t_node *elem)
 
 		last->next = elem;
 		first->prev = elem;
+
+		stack->head = elem;
 	}
 }
 
