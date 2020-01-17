@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:04:14 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/17 00:16:32 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/17 01:33:07 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,39 +24,80 @@ t_stack	*init_stack(void)
 
 t_node	*pop(t_stack *stack)
 {
-	t_node	*result;
+	t_node	*first;
+	t_node	*second;
+	t_node	*last;
 
 	if (stack == NULL || stack->head == NULL)
 		return (NULL);
-	result = stack->head;
-	stack->head = stack->head->next;
-	stack->count = stack->count - 1;
-	return (result);
+	first = stack->head;
+	second = first->next;
+	last = first->prev;
+	first->next = NULL;
+	first->prev = NULL;
+	if (first == last)
+		stack->head = NULL;
+	else
+	{
+		stack->head = second;
+		last->next = second;
+		second->prev = last;
+	}
+	return (first);
 }
 
 void	insert_by_value(t_stack *stack, int value)
 {
 	t_node	*new_elem;
+	t_node	*first;
+	t_node	*last;
 
 	if (stack == NULL)
 		return ;
 	new_elem = malloc(sizeof(*new_elem));
-	// if (stack->last != NULL)
-	// 	stack->head->prev = new_elem;
 	new_elem->value = value;
-	new_elem->next = stack->head;
-	// new_elem->prev = stack->last;
-	stack->head = new_elem;
-	stack->count = stack->count + 1;
+	if (stack->head == NULL)
+	{
+		stack->head = new_elem;
+		new_elem->next = new_elem;
+		new_elem->prev = new_elem;
+	}
+	else
+	{
+		first = stack->head;
+		last = first->prev;
+
+		new_elem->next = first;
+		new_elem->prev = last;
+
+		last->next = new_elem;
+		first->prev = new_elem;
+	}
 }
 
 void	insert_by_node(t_stack *stack, t_node *elem)
 {
+	t_node	*first;
+	t_node	*last;
+
 	if (stack == NULL)
 		return ;
-	elem->next = stack->head;
-	// stack->head->prev = elem;
-	stack->head = elem;
-	stack->count = stack->count + 1;
+	if (stack->head == NULL)
+	{
+		stack->head = elem;
+		elem->next = elem;
+		elem->prev = elem;
+	}
+	else
+	{
+		first = stack->head;
+		last = first->prev;
+
+		elem->next = first;
+		elem->prev = last;
+
+		last->next = elem;
+		first->prev = elem;
+	}
 }
 

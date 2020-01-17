@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:03:25 by xinu              #+#    #+#             */
-/*   Updated: 2019/12/21 20:46:14 by xinu             ###   ########.fr       */
+/*   Updated: 2020/01/17 01:46:13 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 void	print_stack(t_stack *stack)
 {
-	int	i;
 	t_node *iter;
+	t_node *first;
 
 	if (stack == NULL)
 		return ;
-	iter = stack->top;
-	i = 0;
-	// printf("STACK has %d elements\n", stack->count);
-	while (i < stack->count)
+	iter = stack->head;
+	first = iter;
+	if (iter != NULL)
 	{
 		printf("NODE: "CYAN"%3d"COLOR_RESET"\n", iter->value);
 		iter = iter->next;
-		i++;
+	}
+	while (iter != first)
+	{
+		printf("NODE: "CYAN"%3d"COLOR_RESET"\n", iter->value);
+		iter = iter->next;
 	}
 	// printf("ITER: %p\n", iter);
 }

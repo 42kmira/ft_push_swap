@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:40:47 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/17 01:12:04 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/17 01:46:57 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 
 	// elem = pop(stack_b);
 	// insert_by_node(stack_a, elem);
-	// (void)stack_a;
-	// (void)stack_b;
+	(void)stack_a;
+	(void)stack_b;
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
@@ -87,8 +87,8 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 
 	// elem = pop(stack_a);
 	// insert_by_node(stack_b, elem);
-	// (void)stack_a;
-	// (void)stack_b;
+	(void)stack_a;
+	(void)stack_b;
 }
 
 void	ra(t_stack *stack_a, t_stack *stack_b)
