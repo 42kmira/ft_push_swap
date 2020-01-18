@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_checker_stack.c                              :+:      :+:    :+:   */
+/*   input_to_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 20:29:57 by xinu              #+#    #+#             */
-/*   Updated: 2020/01/17 03:15:58 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/18 14:56:42 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,6 @@ int	mini_atoi(char *str)
 	i = 0;
 	sign = 1;
 	result = 0;
-	if (str[i] == '\0')
-	{
-		printf(RED"Throw error here!\n"COLOR_RESET);
-	}
 	if (str[i] == '-')
 	{
 		i++;
@@ -43,18 +39,17 @@ int	mini_atoi(char *str)
 		result = (result * 10) + (str[i] - '0');
 		i++;
 	}
-	if (str[i] != '\0')
-	{
-		printf(RED"Throw error here!\n"COLOR_RESET);
-	}
+	if (str[i] != '\0' || i == 0)
+		errno = EINVAL;
 	return (result * sign);
 }
 
 t_stack	*create_stack_from_list(char **args)
 {
-	int		i;
-	int		value;
-	t_stack	*result;
+	int				i;
+	int				value;
+	t_stack			*result;
+	t_binary_tree	*root;
 
 	i = 0;
 	result = init_stack();
@@ -65,7 +60,10 @@ t_stack	*create_stack_from_list(char **args)
 	while (i >= 0)
 	{
 		value = mini_atoi(args[i]);
+		if (errno == EINVAL)
+			return (NULL);
 		insert_by_value(result, value);
+		tree_insert(&root, value);
 		i--;
 	}
 	return (result);

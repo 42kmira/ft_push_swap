@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:48:07 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/17 17:56:36 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/18 15:02:01 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,15 @@ t_stack		*init_stack(void);
 t_node		*pop(t_stack *stack);
 void		insert_by_value(t_stack *stack, int value);
 void		insert_by_node(t_stack *stack, t_node *elem);
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** FILE: input_to_stack.c
+** Description: Transform program agruements into a stack_a.
+*/
+
+t_stack			*create_stack_from_list(char **args);
+void			tree_insert(t_binary_tree **root, int value);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-

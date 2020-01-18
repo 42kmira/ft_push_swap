@@ -6,7 +6,7 @@
 #    By: kmira <kmira@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/02 16:28:59 by marvin            #+#    #+#              #
-#    Updated: 2020/01/18 13:47:14 by kmira            ###   ########.fr        #
+#    Updated: 2020/01/18 14:59:02 by kmira            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,10 @@ COMMON_SRCS = \
 		move_interface \
 		operations \
 		stack_ops \
+		input_to_stack \
+		tree_functions \
 
 CHK_SRCS = \
-		input_checker_stack \
 		input_checker_operations \
 		main \
 

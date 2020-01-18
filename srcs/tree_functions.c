@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   tree_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/02 16:41:24 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/18 14:59:54 by kmira            ###   ########.fr       */
+/*   Created: 2020/01/18 14:54:47 by kmira             #+#    #+#             */
+/*   Updated: 2020/01/18 15:01:32 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+/*
+** The following functions serve two purposes in this project:
+** the first is
+*/
 
-# include <stdio.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <errno.h>
+#include "common.h"
 
-# include "common.h"
-
-# define OPERATIONS_READ_BUFFER 300
-
-typedef struct	s_operation
+void	tree_insert(t_binary_tree **root, int value)
 {
-	void	(*operation)(t_stack *, t_stack *);
-	char	op_name[5];
-}				t_operation;
-
-void			get_user_input(t_stack *stack_a, t_stack *stack_b);
-
-#endif
+	(void)root;
+	(void)value;
+}

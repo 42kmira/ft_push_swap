@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 17:08:17 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/18 13:35:08 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/18 14:49:41 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		create_jump_table(t_operation *jump_table, t_stack *stack_a, t_stack *stac
 	char		buffer[OPERATIONS_READ_BUFFER + 1];
 
 	ft_bzero(buffer, sizeof(buffer));
-	while (read(STDIN_FILENO, buffer, OPERATIONS_READ_BUFFER))
+	while ((errno != EINVAL) && read(STDIN_FILENO, buffer, OPERATIONS_READ_BUFFER))
 	{
 		i = 0;
 		while (jump_table[i].operation != NULL)
@@ -28,16 +28,14 @@ void		create_jump_table(t_operation *jump_table, t_stack *stack_a, t_stack *stac
 			i++;
 		}
 		if (jump_table[i].operation == NULL)
-			printf(RED"Invalid command!\n"COLOR_RESET);
+		{
+			errno = EINVAL;
+			break ;
+		}
 		else
 			jump_table[i].operation(stack_a, stack_b);
 		ft_bzero(buffer, sizeof(buffer));
 	}
-	printf(MAGENTA"Stack A: \n"COLOR_RESET);
-	print_stack(stack_a);
-	printf(MAGENTA"Stack B: \n"COLOR_RESET);
-	print_stack(stack_b);
-	printf("Program wil now shut down gracefully\n");
 }
 
 /*
