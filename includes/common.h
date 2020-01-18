@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:48:07 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/17 01:33:48 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/17 17:56:36 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 # include "common_struct.h"
 # include "color.h"
+# include "libft.h"
 # include "debug.h"
 
 enum	move_operations
