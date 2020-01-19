@@ -6,11 +6,11 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 20:29:57 by xinu              #+#    #+#             */
-/*   Updated: 2020/01/18 14:56:42 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/18 16:22:29 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "common.h"
 
 int	is_digit(char c)
 {
@@ -52,19 +52,26 @@ t_stack	*create_stack_from_list(char **args)
 	t_binary_tree	*root;
 
 	i = 0;
+	root = NULL;
 	result = init_stack();
 	while (args[i] != NULL)
 		i++;
 	if (args[i] == NULL)
 		i--;
-	while (i >= 0)
+	while (i >= 0 && errno != EINVAL)
 	{
 		value = mini_atoi(args[i]);
 		if (errno == EINVAL)
 			return (NULL);
 		insert_by_value(result, value);
-		tree_insert(&root, value);
+		if (root == NULL)
+			root = init_binary_node(value);
+		else
+			tree_insert(root, value);
 		i--;
 	}
+	printf("Printing Tree \n");
+	print_tree(root);
+	printf("\n");
 	return (result);
 }

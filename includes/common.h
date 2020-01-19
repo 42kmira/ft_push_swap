@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:48:07 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/18 15:02:01 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/18 16:21:31 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <stdint.h>
+# include <errno.h>
 
 # include "common_struct.h"
 # include "color.h"
@@ -64,7 +65,9 @@ void		insert_by_node(t_stack *stack, t_node *elem);
 */
 
 t_stack			*create_stack_from_list(char **args);
-void			tree_insert(t_binary_tree **root, int value);
+void			print_tree(t_binary_tree *root);
+t_binary_tree	*init_binary_node(int value);
+void			tree_insert(t_binary_tree *root, int value);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-

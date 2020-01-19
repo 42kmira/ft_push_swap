@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:41:24 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/18 14:59:54 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/18 15:48:12 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
-# include <errno.h>
 
 # include "common.h"
 
