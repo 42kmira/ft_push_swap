@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:40:47 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/18 13:14:10 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/19 20:41:28 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	sa(t_stack *stack_a, t_stack *stack_b)
 	t_node	*first;
 	t_node	*second;
 	t_node	*last;
+	t_node	*third;
 
 	if (stack_a == NULL || stack_a->head == NULL)
 		return ;
@@ -24,8 +25,8 @@ void	sa(t_stack *stack_a, t_stack *stack_b)
 	if (is_only_node(first))
 		return ;
 	second = first->next;
+	third = second->next;
 	last = first->prev;
-
 	last->next = second;
 	if (last->prev == second)
 		last->prev = first;
@@ -33,6 +34,7 @@ void	sa(t_stack *stack_a, t_stack *stack_b)
 	first->prev = second;
 	second->prev = last;
 	second->next = first;
+	third->prev = first;
 	stack_a->head = second;
 	add_move_counter();
 	(void)stack_b;
@@ -43,6 +45,7 @@ void	sb(t_stack *stack_a, t_stack *stack_b)
 	t_node	*first;
 	t_node	*second;
 	t_node	*last;
+	t_node	*third;
 
 	if (stack_b == NULL || stack_b->head == NULL)
 		return ;
@@ -50,6 +53,7 @@ void	sb(t_stack *stack_a, t_stack *stack_b)
 	if (is_only_node(first))
 		return ;
 	second = first->next;
+	third = second->next;
 	last = first->prev;
 	last->next = second;
 	if (last->prev == second)
@@ -58,6 +62,7 @@ void	sb(t_stack *stack_a, t_stack *stack_b)
 	first->prev = second;
 	second->prev = last;
 	second->next = first;
+	third->prev = first;
 	stack_b->head = second;
 	add_move_counter();
 	(void)stack_a;
