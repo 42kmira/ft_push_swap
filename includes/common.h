@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:48:07 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/18 16:21:31 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/19 19:18:07 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ void		insert_by_node(t_stack *stack, t_node *elem);
 ** Description: Transform program agruements into a stack_a.
 */
 
-t_stack			*create_stack_from_list(char **args);
+t_stack			*create_stack_from_list(char **args, t_binary_tree **root);
 void			print_tree(t_binary_tree *root);
 t_binary_tree	*init_binary_node(int value);
 void			tree_insert(t_binary_tree *root, int value);
+int				cmp_stack_to_sorted_tree(t_stack *stack_a, t_binary_tree *root);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
