@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:01:18 by xinu              #+#    #+#             */
-/*   Updated: 2020/01/17 01:50:50 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/22 23:35:05 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 
 void	print_stack(t_stack *stack);
 void	print_stack_reverse(t_stack *stack);
+void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 
 #endif

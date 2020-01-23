@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:48:07 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/19 19:18:07 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/22 23:34:55 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void			print_tree(t_binary_tree *root);
 t_binary_tree	*init_binary_node(int value);
 void			tree_insert(t_binary_tree *root, int value);
 int				cmp_stack_to_sorted_tree(t_stack *stack_a, t_binary_tree *root);
+int				tree_to_array(t_binary_tree *root, int **array);
+void			fill_array_with_tree(t_binary_tree *root, int *array, int *count);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
