@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:48:07 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/27 01:40:50 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/28 04:23:50 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char	is_only_two_nodes(t_node *first, t_node *second);
 
 int	add_move_counter(void);
 int	subtract_move_counter(void);
+int	counter_interface(int operation, int value);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-

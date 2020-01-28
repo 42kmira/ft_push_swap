@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:40:47 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/25 04:23:38 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/28 05:57:49 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 
 void	ra(t_stack *stack_a, t_stack *stack_b)
 {
+	add_move_counter();
 	if (stack_a == NULL || stack_a->head == NULL)
 		return ;
 	stack_a->head = stack_a->head->next;
@@ -123,6 +124,7 @@ void	ra(t_stack *stack_a, t_stack *stack_b)
 
 void	rb(t_stack *stack_a, t_stack *stack_b)
 {
+	add_move_counter();
 	if (stack_b == NULL || stack_b->head == NULL)
 		return ;
 	stack_b->head = stack_b->head->next;
@@ -140,6 +142,7 @@ void	rr(t_stack *stack_a, t_stack *stack_b)
 
 void	rra(t_stack *stack_a, t_stack *stack_b)
 {
+	add_move_counter();
 	if (stack_a == NULL || stack_a->head == NULL)
 		return ;
 	stack_a->head = stack_a->head->prev;
@@ -148,6 +151,7 @@ void	rra(t_stack *stack_a, t_stack *stack_b)
 
 void	rrb(t_stack *stack_a, t_stack *stack_b)
 {
+	add_move_counter();
 	if (stack_b == NULL || stack_b->head == NULL)
 		return ;
 	stack_b->head = stack_b->head->prev;

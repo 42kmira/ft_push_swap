@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:03:25 by xinu              #+#    #+#             */
-/*   Updated: 2020/01/25 17:04:59 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/28 04:56:17 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,9 +143,10 @@ void	print_stacks_detail(t_stack *stack_a, t_stack *stack_b)
 	else
 		print_detailed(&iter_a);
 	if (iter_b == NULL)
-		printf("NODE: NULL         \n");
+		printf("NODE: NULL         ");
 	else
 		print_detailed(&iter_b);
+	printf("\n");
 
 	while (iter_a != start_a || iter_b != start_b)
 	{
@@ -154,8 +155,9 @@ void	print_stacks_detail(t_stack *stack_a, t_stack *stack_b)
 		else
 			print_detailed(&iter_a);
 		if (iter_b == start_b)
-			printf("NODE: NULL         \n");
+			printf("NODE: NULL         ");
 		else
 			print_detailed(&iter_b);
+		printf("\n");
 	}
 }

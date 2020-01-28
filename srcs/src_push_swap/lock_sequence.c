@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:57:44 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/27 19:56:48 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/28 04:33:09 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ void	find_best_lock_sequence(t_stack *stack, int size)
 		iter = iter->prev;
 		col--;
 	}
-	print_matrix(size, stack->head, matrix);
-	printf("\n");
-	print_stack_matrix(size, stack->head, stack_ptrs);
+	// print_matrix(size, stack->head, matrix);
+	// printf("\n");
+	// print_stack_matrix(size, stack->head, stack_ptrs);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_interface.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 11:21:57 by kmira             #+#    #+#             */
-/*   Updated: 2019/12/21 18:04:58 by xinu             ###   ########.fr       */
+/*   Updated: 2020/01/28 05:55:55 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	counter_interface(int operation, int value)
 
 	if (operation == ADD)
 		counter += value;
+	printf("COUNT: %d\n", counter);
 	return (counter);
 }
 

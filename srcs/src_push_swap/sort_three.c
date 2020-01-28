@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 00:34:10 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/28 03:35:12 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/28 04:34:32 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	sort_by_group_of_three(t_stack *stack_a, t_stack *stack_b)
 	order[1] = ((stack_a->head)->next)->local_rank;
 	commands = fetch_command_sequence(order);
 
-	printf("Commands to do %s\n", commands);
+	// printf("Commands to do %s\n", commands);
 	do_commands(commands, stack_a, stack_b);
 }
 
