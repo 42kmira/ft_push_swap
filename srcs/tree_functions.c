@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:54:47 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/22 17:27:06 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/25 17:44:44 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_binary_tree	*init_binary_node(int value)
 	node->left = NULL;
 	node->right = NULL;
 	node->value = value;
+	node->rank = -1;
 	return (node);
 }
 
@@ -81,6 +82,7 @@ void	fill_array_with_tree(t_binary_tree *root, int *array, int *count)
 	if (root->left != NULL)
 		fill_array_with_tree(root->left, array, count);
 	array[*count] = root->value;
+	root->rank = *count + 1;
 	*count = *count + 1;
 	if (root->right != NULL)
 		fill_array_with_tree(root->right, array, count);
@@ -97,4 +99,33 @@ int		tree_to_array(t_binary_tree *root, int **array)
 	i = 0;
 	fill_array_with_tree(root, *array, &i);
 	return (size);
+}
+
+t_binary_tree	*get_binarytree_node(t_node *key, t_binary_tree *root)
+{
+	if (key->value == root->value)
+		return (root);
+	if (key->value < root->value)
+		return (get_binarytree_node(key, root->left));
+	else
+		return (get_binarytree_node(key, root->right));
+}
+
+void	init_rank(t_stack *stack_a, t_binary_tree *root)
+{
+	t_node			*iter;
+	t_node			*start;
+	t_binary_tree	*rank_info;
+
+	start = stack_a->head;
+	iter = start;
+	rank_info = get_binarytree_node(iter, root);
+	iter->rank = rank_info->rank;
+	iter = iter->next;
+	while (iter != start)
+	{
+		rank_info = get_binarytree_node(iter, root);
+		iter->rank = rank_info->rank;
+		iter = iter->next;
+	}
 }

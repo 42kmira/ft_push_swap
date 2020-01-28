@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:03:25 by xinu              #+#    #+#             */
-/*   Updated: 2020/01/22 23:43:27 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/25 17:04:59 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,57 @@ void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 			printf("NODE: "CYAN"%-10d"COLOR_RESET"\n", iter_b->value);
 			iter_b = iter_b->next;
 		}
+	}
+}
+
+void	print_detailed(t_node **iter)
+{
+	t_node *node;
+
+	node = *iter;
+	if (node->locked == LOCKED_NODE)
+		printf("NODE: "GREEN"%-10d %-3d"COLOR_RESET, node->value, node->rank);
+	else
+		printf("NODE: "CYAN"%-10d %-3d"COLOR_RESET, node->value, node->rank);
+	*iter = (*iter)->next;
+}
+
+void	print_stacks_detail(t_stack *stack_a, t_stack *stack_b)
+{
+	t_node *start_a;
+	t_node *start_b;
+	t_node *iter_a;
+	t_node *iter_b;
+
+	start_a = NULL;
+	start_b = NULL;
+	if (stack_a->head != NULL)
+		start_a = stack_a->head;
+	if (stack_b->head != NULL)
+		start_b = stack_b->head;
+	iter_a = start_a;
+	iter_b = start_b;
+
+	printf(MAGENTA"NEW STACK PRINT\n"COLOR_RESET);
+
+	if (iter_a == NULL)
+		printf("NODE: NULL         ");
+	else
+		print_detailed(&iter_a);
+	if (iter_b == NULL)
+		printf("NODE: NULL         \n");
+	else
+		print_detailed(&iter_b);
+
+	while (iter_a != start_a || iter_b != start_b)
+	{
+		if (iter_a == start_a)
+			printf("NODE: NULL         ");
+		else
+			print_detailed(&iter_a);
+		if (iter_b == start_b)
+			printf("NODE: NULL         \n");
+		else
+			print_detailed(&iter_b);
 	}
 }

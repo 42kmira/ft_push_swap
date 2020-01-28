@@ -6,7 +6,7 @@
 #    By: kmira <kmira@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/02 16:28:59 by marvin            #+#    #+#              #
-#    Updated: 2020/01/19 18:54:19 by kmira            ###   ########.fr        #
+#    Updated: 2020/01/28 04:14:31 by kmira            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,9 @@ CHK_SRCS = \
 		verify_checker \
 
 PUSH_SWAP_SRCS = \
+		lock_sequence \
+		merge_groups \
+		sort_three \
 		main \
 
 COMMON_FILES = \

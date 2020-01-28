@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:40:40 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/22 23:18:50 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/23 00:30:59 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int		main(int aa, char **args)
 		else
 			status = cmp_stack_to_sorted_tree(stack_a, root);
 	}
-	if (status == 1)
+	if (status == 1 && errno ==  0)
 		printf("OK\n");
-	else
+	else if (errno == 0)
 		printf("KO\n");
 	return (0);
 }

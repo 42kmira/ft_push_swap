@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:04:14 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/18 16:21:22 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/24 00:05:39 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	insert_by_value(t_stack *stack, int value)
 		return ;
 	new_elem = malloc(sizeof(*new_elem));
 	new_elem->value = value;
+	new_elem->locked = UNLOCKED_NODE;
 	if (stack->head == NULL)
 	{
 		stack->head = new_elem;

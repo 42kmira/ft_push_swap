@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:48:07 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/22 23:34:55 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/27 01:40:50 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ enum	move_operations
 	READ
 };
 
-void	comm_test(char *str);
 char	is_only_node(t_node *node);
+char	is_only_two_nodes(t_node *first, t_node *second);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
@@ -71,6 +71,8 @@ void			tree_insert(t_binary_tree *root, int value);
 int				cmp_stack_to_sorted_tree(t_stack *stack_a, t_binary_tree *root);
 int				tree_to_array(t_binary_tree *root, int **array);
 void			fill_array_with_tree(t_binary_tree *root, int *array, int *count);
+void			init_rank(t_stack *stack_a, t_binary_tree *root);
+
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-

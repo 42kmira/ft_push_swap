@@ -6,16 +6,11 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:46:38 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/17 06:50:50 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/23 14:18:02 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-void	comm_test(char *str)
-{
-	printf("Common files work %s\n", str);
-}
 
 char	is_only_node(t_node *node)
 {
@@ -28,5 +23,15 @@ char	is_only_node(t_node *node)
 		result = 1;
 	else
 		result = 0;
+	return (result);
+}
+
+char	is_only_two_nodes(t_node *first, t_node *second)
+{
+	char	result;
+
+	result = 0;
+	if (second->next == first)
+		result = 1;
 	return (result);
 }
