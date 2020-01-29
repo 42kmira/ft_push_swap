@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 00:34:10 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/28 04:34:32 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/28 06:08:06 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,12 @@ void	sort_entire_stack_by_groups_of_three(t_stack *stack_a, t_stack *stack_b, in
 		sort_by_group_of_three(stack_a, stack_b);
 		i++;
 	}
-	i = 0;
-	while (i < size % 3)
-	{
+	if (i % 3 == 2)
 		ra(stack_a, stack_b);
-		i++;
+	else if (i % 3 == 1)
+	{
+		sa(stack_a, stack_b);
+		ra(stack_a, stack_b);
+		ra(stack_a, stack_b);
 	}
 }

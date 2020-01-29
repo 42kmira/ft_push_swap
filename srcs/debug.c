@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:03:25 by xinu              #+#    #+#             */
-/*   Updated: 2020/01/28 04:56:17 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/28 19:08:33 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,9 @@ void	print_detailed(t_node **iter)
 
 	node = *iter;
 	if (node->locked == LOCKED_NODE)
-		printf("NODE: "GREEN"%-10d %-3d"COLOR_RESET, node->value, node->rank);
+		printf("NODE: "GREEN"%-10d %-3d "COLOR_RESET, node->value, node->rank);
 	else
-		printf("NODE: "CYAN"%-10d %-3d"COLOR_RESET, node->value, node->rank);
+		printf("NODE: "CYAN"%-10d %-3d "COLOR_RESET, node->value, node->rank);
 	*iter = (*iter)->next;
 }
 
@@ -139,7 +139,7 @@ void	print_stacks_detail(t_stack *stack_a, t_stack *stack_b)
 	printf(MAGENTA"NEW STACK PRINT\n"COLOR_RESET);
 
 	if (iter_a == NULL)
-		printf("NODE: NULL         ");
+		printf("NODE: NULL           ");
 	else
 		print_detailed(&iter_a);
 	if (iter_b == NULL)
@@ -151,7 +151,7 @@ void	print_stacks_detail(t_stack *stack_a, t_stack *stack_b)
 	while (iter_a != start_a || iter_b != start_b)
 	{
 		if (iter_a == start_a)
-			printf("NODE: NULL         ");
+			printf("NODE: NULL           ");
 		else
 			print_detailed(&iter_a);
 		if (iter_b == start_b)
