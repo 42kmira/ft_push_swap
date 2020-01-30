@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:40:43 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/30 01:37:08 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/30 01:50:50 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,25 +47,21 @@ int		calc_forward_rots(t_stack *stack_a, t_stack *stack_b)
 	iter = stack_a->head;
 	insert = stack_b->head;
 	start = stack_a->head;
-	if (iter->value > insert->value)
+	if (insert->value < iter->value)
 	{
-		while (iter->next->value > iter->value) //go to the start of the list
+		while (iter->next->value > iter->value)
 		{
 			iter = iter->next;
 			result++;
 		}
-		iter = iter->next; // start of the list
+		iter = iter->next;
 		start = iter;
 		result++;
 	}
-	if (iter->value < iter->prev->value) //We are at the start of list
-	{
-		if (iter->prev->value < insert->value)
-			return (0); //insert is the biggest number
-	}
+	if (iter->prev->value < insert->value && iter->value < iter->prev->value)
+		return (0);
 	while (iter->value < insert->value)
 	{
-		// printf("INF\n");
 		iter = iter->next;
 		result++;
 		if (iter->value < iter->prev->value)
@@ -95,29 +91,6 @@ int		count_nodes(t_stack *stack)
 	return (result);
 }
 
-void	start_merge(t_stack *stack_a, t_stack *stack_b)
-{
-	int		forward_rots;
-	int		reverse_rots;
-
-	printf(BOLDLIGHT_PURPLE"!!!!!!!!!!!!!!!!!!!!!!!!STARTING MERGE!!!!!!!!!!!!!!!!!!!!!!!!\n"COLOR_RESET);
-	while (stack_b->head != NULL)
-	{
-		forward_rots = calc_forward_rots(stack_a, stack_b);
-		// reverse_rots = calc_reverse_rots(stack_a, stack_b);
-		reverse_rots =  count_nodes(stack_a) - forward_rots;
-		// printf("Forward rot: %d\n", forward_rots);
-		// printf("Reverse rot: %d\n", reverse_rots);
-		if (forward_rots <= reverse_rots)
-			forward_rotate(stack_a, stack_b, forward_rots);
-		else
-			reverse_rotate(stack_a, stack_b, reverse_rots);
-		// print_stacks_detail(stack_a, stack_b);
-		pa(stack_a, stack_b);
-		// print_stacks_detail(stack_a, stack_b);
-	}
-}
-
 int		lock_push(t_stack *stack_a, t_stack *stack_b)
 {
 	int		size;
@@ -125,30 +98,20 @@ int		lock_push(t_stack *stack_a, t_stack *stack_b)
 	t_node	*iter;
 	t_node	*last_locked_node;
 
-	size = 0;
-	iter = stack_a->head;
-	stop = stack_a->head->prev;
-	while (iter != stop)
-	{
-		iter = iter->next;
-		size++;
-	}
-	// size = count_nodes(stack_a) - 1;
+	// print_stacks_detail(stack_a, stack_b);
+	size = count_nodes(stack_a) - 1;
 	if (size < 3)
 		return (LAST_SORT);
-	// print_stacks_detail(stack_a, stack_b);
 	find_best_lock_sequence(stack_a, size);
-
-
-	last_locked_node = NULL;
 	iter = stack_a->head;
+	last_locked_node = NULL;
+	stop = stack_a->head->prev;
 	while (iter != stop)
 	{
 		if (iter->locked == LOCKED_NODE)
 			last_locked_node = iter;
 		iter = iter->next;
 	}
-
 	while (stack_a->head != last_locked_node)
 	{
 		if (stack_a->head->locked == LOCKED_NODE)

@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 20:29:57 by xinu              #+#    #+#             */
-/*   Updated: 2020/01/19 20:14:25 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/30 01:55:35 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,11 @@ int	mini_atoi(char *str)
 	i = 0;
 	sign = 1;
 	result = 0;
-	if (str[i] == '-')
+	if (str[i] == '-' && str[i + 1] != '\0')
 	{
 		i++;
 		sign = -1;
 	}
-	if (str[i] == '\0')
-		errno = EINVAL;
 	while (is_digit(str[i]))
 	{
 		result = (result * 10) + (str[i] - '0');

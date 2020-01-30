@@ -6,29 +6,11 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 00:34:10 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/29 23:37:05 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/30 01:51:58 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <common.h>
-
-char *fetch_command_sequence(int *rank_order)
-{
-	if (rank_order[0] == LOW && rank_order[1] == MED)
-		return ("ra ra ra");
-	else if (rank_order[0] == LOW && rank_order[1] == HIG)
-		return ("ra sa ra ra");
-	else if (rank_order[0] == MED && rank_order[1] == LOW)
-		return ("sa ra ra ra");
-	else if (rank_order[0] == MED && rank_order[1] == HIG)
-		return ("pb sa ra pa ra ra");
-	else if (rank_order[0] == HIG && rank_order[1] == LOW)
-		return ("sa ra sa ra ra");
-	else if (rank_order[0] == HIG && rank_order[1] == MED)
-		return ("pb sa ra ra pa ra");
-	else
-		return (NULL);
-}
 
 /*
 ** If the number is equal to or less than all the numbers it is
@@ -96,7 +78,7 @@ void	do_commands(char *str, t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-char *fetch_command_sequence_alt(int *rank_order)
+char	*fetch_command_sequence_alt(int *rank_order)
 {
 	if (rank_order[0] == LOW && rank_order[1] == MED)
 		return ("");
@@ -126,24 +108,4 @@ void	sort_by_group_of_three(t_stack *stack_a, t_stack *stack_b)
 
 	printf("Commands to do %s\n", commands);
 	do_commands(commands, stack_a, stack_b);
-}
-
-void	sort_entire_stack_by_groups_of_three(t_stack *stack_a, t_stack *stack_b, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size / 3)
-	{
-		sort_by_group_of_three(stack_a, stack_b);
-		i++;
-	}
-	if (i % 3 == 2)
-		ra(stack_a, stack_b);
-	else if (i % 3 == 1)
-	{
-		sa(stack_a, stack_b);
-		ra(stack_a, stack_b);
-		ra(stack_a, stack_b);
-	}
 }
