@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:48:07 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/28 04:23:50 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/30 01:59:42 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ enum	move_operations
 
 char	is_only_node(t_node *node);
 char	is_only_two_nodes(t_node *first, t_node *second);
+int		count_nodes(t_stack *stack);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-

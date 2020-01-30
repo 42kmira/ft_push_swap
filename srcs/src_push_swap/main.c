@@ -6,90 +6,11 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:40:43 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/30 01:50:50 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/30 02:00:23 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	forward_rotate(t_stack *stack_a, t_stack *stack_b, int amount)
-{
-	int	i;
-
-	i = 0;
-	while (i < amount)
-	{
-		ra(stack_a, stack_b);
-		i++;
-	}
-}
-
-void	reverse_rotate(t_stack *stack_a, t_stack *stack_b, int amount)
-{
-	int	i;
-
-	i = 0;
-	while (i < amount)
-	{
-		rra(stack_a, stack_b);
-		i++;
-	}
-}
-
-int		calc_forward_rots(t_stack *stack_a, t_stack *stack_b)
-{
-	int		result;
-	t_node	*insert;
-	t_node	*iter;
-	t_node	*start;
-
-	result = 0;
-	iter = stack_a->head;
-	insert = stack_b->head;
-	start = stack_a->head;
-	if (insert->value < iter->value)
-	{
-		while (iter->next->value > iter->value)
-		{
-			iter = iter->next;
-			result++;
-		}
-		iter = iter->next;
-		start = iter;
-		result++;
-	}
-	if (iter->prev->value < insert->value && iter->value < iter->prev->value)
-		return (0);
-	while (iter->value < insert->value)
-	{
-		iter = iter->next;
-		result++;
-		if (iter->value < iter->prev->value)
-			break ;
-	}
-	if (iter == stack_a->head)
-		return (0);
-	return (result);
-}
-
-int		count_nodes(t_stack *stack)
-{
-	int		result;
-	t_node	*start;
-	t_node	*iter;
-
-	result = 0;
-	start = NULL;
-	iter = stack->head;
-	while (iter != start)
-	{
-		if (start == NULL)
-			start = iter;
-		iter = iter->next;
-		result++;
-	}
-	return (result);
-}
 
 int		lock_push(t_stack *stack_a, t_stack *stack_b)
 {
