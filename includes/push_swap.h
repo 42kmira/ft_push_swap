@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:42:16 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/28 19:17:37 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/28 19:38:03 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	sort_entire_stack_by_groups_of_three(t_stack *stack_a, t_stack *stack_b, in
 
 void	first_merge(t_stack *from, t_stack *stack_a, t_stack *stack_b);
 void	merge_order(t_stack *stack_a, t_stack *stack_b);
+int		merge_groups(t_stack *stack_a, t_stack *stack_b);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-

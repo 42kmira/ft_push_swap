@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 00:34:10 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/28 06:08:06 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/29 23:37:05 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,11 @@ void	do_commands(char *str, t_stack *stack_a, t_stack *stack_b)
 			pb(stack_a, stack_b);
 		else if (str[i + 0] == 'p' && str[i + 1] == 'a')
 			pa(stack_a, stack_b);
+		else if (str[i + 0] == 'r' && str[i + 1] == 'r' && str[i + 2] == 'a')
+		{
+			i++;
+			rra(stack_a, stack_b);
+		}
 		else
 			printf("Error parsing the command string\n");
 		i++;
@@ -89,6 +94,24 @@ void	do_commands(char *str, t_stack *stack_a, t_stack *stack_b)
 		if (str[i] == ' ')
 			i++;
 	}
+}
+
+char *fetch_command_sequence_alt(int *rank_order)
+{
+	if (rank_order[0] == LOW && rank_order[1] == MED)
+		return ("");
+	else if (rank_order[0] == LOW && rank_order[1] == HIG)
+		return ("rra sa");
+	else if (rank_order[0] == MED && rank_order[1] == LOW)
+		return ("sa");
+	else if (rank_order[0] == MED && rank_order[1] == HIG)
+		return ("rra");
+	else if (rank_order[0] == HIG && rank_order[1] == LOW)
+		return ("ra");
+	else if (rank_order[0] == HIG && rank_order[1] == MED)
+		return ("sa rra");
+	else
+		return (NULL);
 }
 
 void	sort_by_group_of_three(t_stack *stack_a, t_stack *stack_b)
@@ -99,9 +122,9 @@ void	sort_by_group_of_three(t_stack *stack_a, t_stack *stack_b)
 	local_rank_three(stack_a);
 	order[0] = (stack_a->head)->local_rank;
 	order[1] = ((stack_a->head)->next)->local_rank;
-	commands = fetch_command_sequence(order);
+	commands = fetch_command_sequence_alt(order);
 
-	// printf("Commands to do %s\n", commands);
+	printf("Commands to do %s\n", commands);
 	do_commands(commands, stack_a, stack_b);
 }
 
