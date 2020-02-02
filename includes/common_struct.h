@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 11:21:57 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/27 00:42:07 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/01 16:14:26 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef	struct		s_node
 typedef	struct		s_stack
 {
 	struct	s_node	*head;
-	int				count;
 }					t_stack;
 
 typedef struct	s_binary_tree

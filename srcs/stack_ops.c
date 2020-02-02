@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:04:14 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/30 01:56:39 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/01 16:14:37 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_stack	*init_stack(void)
 	t_stack	*stack;
 
 	stack = malloc(sizeof(*stack));
-	stack->count = 0;
 	stack->head = NULL;
 	return (stack);
 }
@@ -100,3 +99,32 @@ void	insert_by_node(t_stack *stack, t_node *elem)
 	}
 }
 
+void	free_stack(t_stack *stack)
+{
+	t_node	*iter;
+	t_node	*malloced_node;
+	t_node	*start;
+
+	if (stack->head != NULL)
+	{
+		start = stack->head;
+		malloced_node = stack->head;
+		iter = malloced_node->next;
+		free(malloced_node);
+		while (iter != start)
+		{
+			malloced_node = iter;
+			iter = iter->next;
+			free(malloced_node);
+		}
+	}
+	free(stack);
+}
+
+void	free_stacks(t_stack *stack_a, t_stack *stack_b)
+{
+	if (stack_a != NULL)
+		free_stack(stack_a);
+	if (stack_b != NULL)
+		free_stack(stack_b);
+}

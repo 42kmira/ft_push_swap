@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:54:47 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/30 01:56:47 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/01 16:17:39 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,4 +128,13 @@ void	init_rank(t_stack *stack_a, t_binary_tree *root)
 		iter->rank = rank_info->rank;
 		iter = iter->next;
 	}
+}
+
+void	free_tree(t_binary_tree *root)
+{
+	if (root->left != NULL)
+		free_tree(root->left);
+	if (root->right != NULL)
+		free_tree(root->right);
+	free(root);
 }

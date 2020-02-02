@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:40:47 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/30 01:56:28 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/30 02:12:33 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sa(t_stack *stack_a, t_stack *stack_b)
 	t_node	*last;
 	t_node	*third;
 
-	// printf("sa ");
+	printf("sa\n");
 	add_move_counter();
 	if (stack_a == NULL || stack_a->head == NULL)
 		return ;
@@ -54,7 +54,7 @@ void	sb(t_stack *stack_a, t_stack *stack_b)
 	t_node	*last;
 	t_node	*third;
 
-	// printf("sb ");
+	printf("sb\n");
 	add_move_counter();
 	if (stack_b == NULL || stack_b->head == NULL)
 		return ;
@@ -84,7 +84,7 @@ void	sb(t_stack *stack_a, t_stack *stack_b)
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
 {
-	// printf("ss ");
+	printf("ss\n");
 	sa(stack_a, stack_b);
 	subtract_move_counter();
 	sb(stack_a, stack_b);
@@ -96,7 +96,7 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*elem;
 
-	// printf("pa ");
+	printf("pa\n");
 	elem = pop(stack_b);
 	if (elem != NULL)
 		insert_by_node(stack_a, elem);
@@ -109,7 +109,7 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*elem;
 
-	// printf("pb ");
+	printf("pb\n");
 	elem = pop(stack_a);
 	if (elem != NULL)
 		insert_by_node(stack_b, elem);
@@ -120,7 +120,7 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 
 void	ra(t_stack *stack_a, t_stack *stack_b)
 {
-	// printf("ra ");
+	printf("ra\n");
 	add_move_counter();
 	if (stack_a == NULL || stack_a->head == NULL)
 		return ;
@@ -130,7 +130,7 @@ void	ra(t_stack *stack_a, t_stack *stack_b)
 
 void	rb(t_stack *stack_a, t_stack *stack_b)
 {
-	// printf("rb ");
+	printf("rb\n");
 	add_move_counter();
 	if (stack_b == NULL || stack_b->head == NULL)
 		return ;
@@ -140,7 +140,7 @@ void	rb(t_stack *stack_a, t_stack *stack_b)
 
 void	rr(t_stack *stack_a, t_stack *stack_b)
 {
-	// printf("rr ");
+	printf("rr\n");
 	ra(stack_a, stack_b);
 	subtract_move_counter();
 	rb(stack_a, stack_b);
@@ -150,7 +150,7 @@ void	rr(t_stack *stack_a, t_stack *stack_b)
 
 void	rra(t_stack *stack_a, t_stack *stack_b)
 {
-	// printf("rra ");
+	printf("rra\n");
 	add_move_counter();
 	if (stack_a == NULL || stack_a->head == NULL)
 		return ;
@@ -160,7 +160,7 @@ void	rra(t_stack *stack_a, t_stack *stack_b)
 
 void	rrb(t_stack *stack_a, t_stack *stack_b)
 {
-	// printf("rrb ");
+	printf("rrb\n");
 	add_move_counter();
 	if (stack_b == NULL || stack_b->head == NULL)
 		return ;
@@ -170,7 +170,7 @@ void	rrb(t_stack *stack_a, t_stack *stack_b)
 
 void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
-	// printf("rr ");
+	printf("rr\n");
 	rra(stack_a, stack_b);
 	subtract_move_counter();
 	rrb(stack_a, stack_b);
