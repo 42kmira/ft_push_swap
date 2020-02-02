@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:40:40 by marvin            #+#    #+#             */
-/*   Updated: 2020/02/01 16:33:51 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/01 17:19:47 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@
 ** the list is mostly or completely sorted in reverse order.
 */
 
+void	print_status(int status)
+{
+	if (status != EMPTY_ARGS)
+	{
+		if (status == 1 && errno == 0)
+			printf("OK\n");
+		else if (errno == 0)
+			printf("KO\n");
+	}
+}
+
 int		main(int aa, char **args)
 {
 	t_stack			*stack_a;
@@ -34,10 +45,7 @@ int		main(int aa, char **args)
 	status = 0;
 	root = NULL;
 	if (aa <= 1)
-	{
-		printf(RED"Not enough arguements!\n"COLOR_RESET);
-		return (0);
-	}
+		status = EMPTY_ARGS;
 	else
 	{
 		stack_a = create_stack_from_list(&args[1], &root);
@@ -50,10 +58,7 @@ int		main(int aa, char **args)
 		free_stacks(stack_a, stack_b);
 		free_tree(root);
 	}
-	if (status == 1 && errno == 0)
-		printf("OK\n");
-	else if (errno == 0)
-		printf("KO\n");
+	print_status(status);
 	system("leaks checker");
 	return (0);
 }

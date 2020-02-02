@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:57:44 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/30 01:47:51 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/01 17:21:15 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,21 @@ void	init_matrix(int ***matrix_address, t_node ****stack_ptrs_addr, int size)
 	(*stack_ptrs_addr) = stack_ptrs;
 	stack_ptrs[i] = NULL;
 	matrix[i] = NULL;
+}
+
+void	free_matrix(int **matrix, t_node ***stack_ptrs, int size)
+{
+	int		i;
+
+	i = 0;
+	while (i < size)
+	{
+		free(stack_ptrs[i]);
+		free(matrix[i]);
+		i++;
+	}
+	free(stack_ptrs);
+	free(matrix);
 }
 
 void	print_matrix(int size, t_node *iter, int **matrix)
@@ -122,7 +137,6 @@ void	find_best_lock_sequence(t_stack *stack, int size)
 		row = 0;
 		while (row < col)
 		{
-			//what is matrix[row][col]?
 			i = 0;
 			iter = stack->head;
 			while (i < row)
@@ -186,7 +200,5 @@ void	find_best_lock_sequence(t_stack *stack, int size)
 		iter = iter->prev;
 		col--;
 	}
-	// print_matrix(size, stack->head, matrix);
-	// printf("\n");
-	// print_stack_matrix(size, stack->head, stack_ptrs);
+	free_matrix(matrix, stack_ptrs, size);
 }

@@ -6,19 +6,20 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 17:08:17 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/30 01:47:02 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/01 17:09:57 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void		create_jump_table(t_operation *jump_table, t_stack *stack_a, t_stack *stack_b)
+void	create_jump_table(t_operation *jump_table,
+							t_stack *stack_a, t_stack *stack_b)
 {
 	int			i;
-	char		buffer[OPERATIONS_READ_BUFFER + 1];
+	char		buffer[OPS_READ_BUFFER + 1];
 
 	ft_bzero(buffer, sizeof(buffer));
-	while ((errno != EINVAL) && read(STDIN_FILENO, buffer, OPERATIONS_READ_BUFFER))
+	while ((errno != EINVAL) && read(STDIN_FILENO, buffer, OPS_READ_BUFFER))
 	{
 		i = 0;
 		while (jump_table[i].operation != NULL)
@@ -47,7 +48,7 @@ void		create_jump_table(t_operation *jump_table, t_stack *stack_a, t_stack *stac
 ** elements in the array.
 */
 
-void		get_user_input(t_stack *stack_a, t_stack *stack_b)
+void	get_user_input(t_stack *stack_a, t_stack *stack_b)
 {
 	create_jump_table((t_operation[])
 		{

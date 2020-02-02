@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 00:34:10 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/30 02:07:29 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/01 17:28:38 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,12 @@ void	local_rank_three(t_stack *stack_a)
 	first = stack_a->head;
 	second = first->next;
 	third = second->next;
-
-	first->local_rank = rank_of_three(first->rank, second->rank, third->rank, first->rank);
-	second->local_rank = rank_of_three(first->rank, second->rank, third->rank, second->rank);
-	third->local_rank = rank_of_three(first->rank, second->rank, third->rank, third->rank);
+	first->local_rank = rank_of_three(first->rank, second->rank, third->rank,
+	first->rank);
+	second->local_rank = rank_of_three(first->rank, second->rank, third->rank,
+	second->rank);
+	third->local_rank = rank_of_three(first->rank, second->rank, third->rank,
+	third->rank);
 }
 
 void	do_commands(char *str, t_stack *stack_a, t_stack *stack_b)
@@ -105,7 +107,5 @@ void	sort_by_group_of_three(t_stack *stack_a, t_stack *stack_b)
 	order[0] = (stack_a->head)->local_rank;
 	order[1] = ((stack_a->head)->next)->local_rank;
 	commands = fetch_command_sequence_alt(order);
-
-	// printf("Commands to do %s\n", commands);
 	do_commands(commands, stack_a, stack_b);
 }
