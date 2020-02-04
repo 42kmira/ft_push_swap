@@ -6,7 +6,7 @@
 #    By: kmira <kmira@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/02 16:28:59 by marvin            #+#    #+#              #
-#    Updated: 2020/01/28 04:14:31 by kmira            ###   ########.fr        #
+#    Updated: 2020/02/03 23:33:16 by kmira            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,20 @@ INCLUDES = -I includes/
 LIBRARY = srcs/libft/libft.a
 
 COMMON_SRCS = \
+		buffer \
 		common \
 		debug \
 		move_interface \
-		operations \
+		sorted_array \
 		stack_ops \
 		input_to_stack \
 		tree_functions \
+
+OPERATIONS_SRCS = \
+		operations_combined \
+		operations_push \
+		operations_rotate \
+		operations_swap
 
 CHK_SRCS = \
 		input_checker_operations \
@@ -33,12 +40,14 @@ CHK_SRCS = \
 
 PUSH_SWAP_SRCS = \
 		lock_sequence \
+		lock_sequence_utils \
 		merge_groups \
 		sort_three \
 		main \
 
 COMMON_FILES = \
-	$(addprefix srcs/, $(COMMON_SRCS))
+	$(addprefix srcs/, $(COMMON_SRCS)) \
+	$(addprefix srcs/operations/, $(OPERATIONS_SRCS))
 
 CHK_FILES = \
 	$(addprefix srcs/, $(addprefix src_checker/, $(CHK_SRCS)))
@@ -50,7 +59,7 @@ COMMON_C_FILES = $(addsuffix .c, $(COMMON_FILES))
 CHK_C_FILES = $(addsuffix .c, $(CHK_FILES))
 PUSH_SWAP_C_FILES = $(addsuffix .c, $(PUSH_SWAP_FILES))
 
-COMMON_OBJS = $(addsuffix .o, $(COMMON_SRCS))
+COMMON_OBJS = $(addsuffix .o, $(COMMON_SRCS)) $(addsuffix .o, $(OPERATIONS_SRCS))
 CHK_OBJS = $(addsuffix .o, $(CHK_SRCS))
 PUSH_SWAP_OBJS = $(addsuffix .o, $(PUSH_SWAP_SRCS))
 

@@ -6,16 +6,16 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 11:21:57 by kmira             #+#    #+#             */
-/*   Updated: 2020/02/01 16:14:26 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/03 00:02:34 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COMMON_STRUCT_H
 # define COMMON_STRUCT_H
 
-#define LOW 0
-#define MED 1
-#define HIG 2
+# define LOW 0
+# define MED 1
+# define HIG 2
 
 typedef	struct		s_node
 {
@@ -23,22 +23,21 @@ typedef	struct		s_node
 	int				locked;
 	int				rank;
 	int				local_rank;
-	struct	s_node	*next;
-	struct	s_node	*prev;
+	struct s_node	*next;
+	struct s_node	*prev;
 }					t_node;
 
 typedef	struct		s_stack
 {
-	struct	s_node	*head;
+	struct s_node	*head;
 }					t_stack;
 
-typedef struct	s_binary_tree
+typedef struct		s_binary_tree
 {
 	int						value;
 	int						rank;
 	struct s_binary_tree	*left;
 	struct s_binary_tree	*right;
-}				t_binary_tree;
+}					t_binary_tree;
 
 #endif
-

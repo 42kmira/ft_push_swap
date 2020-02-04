@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:42:16 by marvin            #+#    #+#             */
-/*   Updated: 2020/01/30 01:50:44 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/03 22:56:08 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include "common.h"
 
-#define LAST_SORT 1
+# define LAST_SORT 1
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
@@ -25,7 +25,8 @@
 */
 
 void	sort_by_group_of_three(t_stack *stack_a, t_stack *stack_b);
-void	sort_entire_stack_by_groups_of_three(t_stack *stack_a, t_stack *stack_b, int size);
+void	sort_entire_stack_by_groups_of_three(t_stack *stack_a, t_stack *stack_b,
+											int size);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
@@ -44,5 +45,7 @@ void	start_merge(t_stack *stack_a, t_stack *stack_b);
 */
 
 void	find_best_lock_sequence(t_stack *stack, int size);
+void	init_matrix(int ***matrix_addr, t_node ****stack_ptrs_addr, int size);
+void	free_matrix(int **matrix, t_node ***stack_ptrs, int size);
 
 #endif

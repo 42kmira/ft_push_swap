@@ -6,199 +6,130 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:57:44 by kmira             #+#    #+#             */
-/*   Updated: 2020/02/01 17:21:15 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/03 22:45:41 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-** The paramaters for this are a bit wild but it should be done like that.
-** The first is the address of a 2D array. Hence the three stars.
-** The second is the address of a 2D of pointers:
-** 		(t_node *) -> type
-** 		(*) -> address (passing by address)
-** 		(**) -> 2D array
-*/
-
-void	init_matrix(int ***matrix_address, t_node ****stack_ptrs_addr, int size)
-{
-	int		i;
-	int		**matrix;
-	t_node	***stack_ptrs;
-
-	i = 0;
-	matrix = malloc(sizeof(*matrix) * (size + 1));
-	stack_ptrs = malloc(sizeof(*stack_ptrs) * (size + 1));
-	while (i < size)
-	{
-		matrix[i] = malloc(sizeof(**matrix) * (size));
-		stack_ptrs[i] = malloc(sizeof(**stack_ptrs) * (size));
-		ft_bzero(matrix[i], sizeof(**matrix) * (size));
-		ft_bzero(stack_ptrs[i], sizeof(**stack_ptrs) * (size));
-		i++;
-	}
-	(*matrix_address) = matrix;
-	(*stack_ptrs_addr) = stack_ptrs;
-	stack_ptrs[i] = NULL;
-	matrix[i] = NULL;
-}
-
-void	free_matrix(int **matrix, t_node ***stack_ptrs, int size)
-{
-	int		i;
-
-	i = 0;
-	while (i < size)
-	{
-		free(stack_ptrs[i]);
-		free(matrix[i]);
-		i++;
-	}
-	free(stack_ptrs);
-	free(matrix);
-}
-
-void	print_matrix(int size, t_node *iter, int **matrix)
+int		highest_col(int **matrix, int size)
 {
 	int	row;
 	int	col;
+	int	best_chain;
+	int	result;
 
 	row = 0;
-	while (row < size)
-	{
-		printf("%3d ", iter->value);
-		iter = iter->next;
-		row++;
-	}
-	printf("\n");
-	row = 0;
+	best_chain = 0;
+	result = 0;
 	while (row < size)
 	{
 		col = 0;
 		while (col < size)
 		{
-			printf("%3d ", matrix[row][col]);
+			if (best_chain < matrix[row][col])
+			{
+				best_chain = matrix[row][col];
+				result = col;
+			}
 			col++;
 		}
-		printf("\n");
 		row++;
 	}
+	return (result);
 }
 
-void	print_stack_matrix(int size, t_node *iter, t_node ***stack_ptrs)
+int		scan_rows_for_max_chain(int **matrix, t_node ***stack_ptrs,
+								int stop, t_node **cur)
 {
-	int	col;
 	int	row;
+	int	max_result;
 
-	col = 0;
-	while (col < size)
-	{
-		printf("%3d ", iter->value);
-		iter = iter->next;
-		col++;
-	}
-	printf("\n");
 	row = 0;
-	while (row < size)
+	max_result = matrix[0][stop];
+	while (row < stop)
 	{
-		col = -1;
-		while (++col < size)
-			if (stack_ptrs[row][col] != NULL)
-				printf("%3d ", (stack_ptrs[row][col])->value);
-			else
-				printf("NUL ");
-		printf("\n");
+		if (matrix[row][stop] >= max_result)
+		{
+			*cur = stack_ptrs[row][stop];
+			max_result = matrix[row][stop];
+		}
 		row++;
 	}
+	return (max_result);
 }
 
-void	find_best_lock_sequence(t_stack *stack, int size)
+void	lock_nodes(int **matrix, t_node ***stack_ptrs,
+						t_stack *stack, int size)
 {
-	int		col;
-	int		row;
-	int		**matrix;
-	t_node	***stack_ptrs;
-	t_node	*iter;
-	t_node	*curr;
-	int		best_match;
-	int		best_row;
-	int		best_col;
+	int			max;
+	int			col;
+	int			best_col;
+	t_node		*curr;
+	t_node		*iter;
 
-	init_matrix(&matrix, &stack_ptrs, size);
-
-	int		i;
-
-	col = 0;
-	best_match = 0;
-	curr = stack->head;
-	while (col < size)
-	{
-		row = 0;
-		while (row < col)
-		{
-			i = 0;
-			iter = stack->head;
-			while (i < row)
-			{
-				iter = iter->next;
-				i++;
-			}
-			while (i < col)
-			{
-				if (iter->value < curr->value && matrix[row][col] <= matrix[row][i])
-				{
-					stack_ptrs[row][col] = iter;
-					matrix[row][col] = matrix[row][i] + 1;
-				}
-				if (best_match < matrix[row][col])
-				{
-					best_row = row;
-					best_col = col;
-					best_match = matrix[row][col];
-				}
-				iter = iter->next;
-				i++;
-			}
-			row++;
-		}
-		curr = curr->next;
-		col++;
-	}
-
-	col = 0;
+	col = -1;
 	iter = stack->head;
-	while (col < best_col)
-	{
+	best_col = highest_col(matrix, size);
+	while (++col < best_col)
 		iter = iter->next;
-		col++;
-	}
 	iter->locked = LOCKED_NODE;
-	int	max;
-	int	curr_max;
-
 	curr = iter;
 	while (col > 0)
 	{
-		max = matrix[0][col];
-		curr_max = max;
-		if (curr != NULL && curr->value == iter->value)
+		if (curr != NULL && curr == iter)
 		{
-			row = 0;
-			while (row < col)
-			{
-				if (matrix[row][col] >= max)
-				{
-					curr = stack_ptrs[row][col];
-					max = curr_max;
-				}
-				row++;
-			}
+			max = scan_rows_for_max_chain(matrix, stack_ptrs, col, &curr);
 			if (curr != NULL)
 				curr->locked = LOCKED_NODE;
 		}
 		iter = iter->prev;
 		col--;
 	}
+}
+
+void	fill_matrix(int **matrix, t_node ***stack_ptrs, int col, t_stack *stack)
+{
+	int		i;
+	int		row;
+	t_node	*iter;
+	t_node	*curr;
+
+	i = -1;
+	row = -1;
+	curr = stack->head;
+	while (++i < col)
+		curr = curr->next;
+	while (++row < col)
+	{
+		i = -1;
+		iter = stack->head;
+		while (++i < col)
+		{
+			if (i > row && iter->value < curr->value
+				&& matrix[row][col] <= matrix[row][i])
+			{
+				stack_ptrs[row][col] = iter;
+				matrix[row][col] = matrix[row][i] + 1;
+			}
+			iter = iter->next;
+		}
+	}
+}
+
+void	find_best_lock_sequence(t_stack *stack, int size)
+{
+	int		col;
+	int		**matrix;
+	t_node	***stack_ptrs;
+
+	col = 0;
+	init_matrix(&matrix, &stack_ptrs, size);
+	while (col < size)
+	{
+		fill_matrix(matrix, stack_ptrs, col, stack);
+		col++;
+	}
+	lock_nodes(matrix, stack_ptrs, stack, size);
 	free_matrix(matrix, stack_ptrs, size);
 }

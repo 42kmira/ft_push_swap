@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_interface.c                                   :+:      :+:    :+:   */
+/*   operations_push.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/05 11:21:57 by kmira             #+#    #+#             */
-/*   Updated: 2020/02/02 07:45:44 by kmira            ###   ########.fr       */
+/*   Created: 2019/12/05 12:40:47 by kmira             #+#    #+#             */
+/*   Updated: 2020/02/03 23:31:58 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "common.h"
 
-int	counter_interface(int operation, int value)
+void	pa(t_stack *stack_a, t_stack *stack_b)
 {
-	static int	counter;
+	t_node	*elem;
 
-	if (operation == ADD)
-		counter += value;
-	return (counter);
+	buffer_output_str("pa\n", 0);
+	elem = pop(stack_b);
+	if (elem != NULL)
+		insert_by_node(stack_a, elem);
+	add_move_counter();
+	(void)stack_a;
+	(void)stack_b;
 }
 
-int	add_move_counter(void)
+void	pb(t_stack *stack_a, t_stack *stack_b)
 {
-	int	result;
+	t_node	*elem;
 
-	result = counter_interface(ADD, 1);
-	return (result);
-}
-
-int	subtract_move_counter(void)
-{
-	int	result;
-
-	result = counter_interface(ADD, -1);
-	return (result);
+	buffer_output_str("pb\n", 0);
+	elem = pop(stack_a);
+	if (elem != NULL)
+		insert_by_node(stack_b, elem);
+	add_move_counter();
+	(void)stack_a;
+	(void)stack_b;
 }

@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:04:14 by kmira             #+#    #+#             */
-/*   Updated: 2020/02/01 16:14:37 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/03 00:33:01 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,28 +103,19 @@ void	free_stack(t_stack *stack)
 {
 	t_node	*iter;
 	t_node	*malloced_node;
-	t_node	*start;
 
 	if (stack->head != NULL)
 	{
-		start = stack->head;
 		malloced_node = stack->head;
-		iter = malloced_node->next;
+		iter = stack->head->next;
 		free(malloced_node);
-		while (iter != start)
+		while (iter != stack->head)
 		{
 			malloced_node = iter;
 			iter = iter->next;
 			free(malloced_node);
 		}
 	}
-	free(stack);
-}
-
-void	free_stacks(t_stack *stack_a, t_stack *stack_b)
-{
-	if (stack_a != NULL)
-		free_stack(stack_a);
-	if (stack_b != NULL)
-		free_stack(stack_b);
+	if (stack != NULL)
+		free(stack);
 }

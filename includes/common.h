@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:48:07 by marvin            #+#    #+#             */
-/*   Updated: 2020/02/01 16:17:06 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/03 23:32:49 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@
 # include "libft.h"
 # include "debug.h"
 
-enum	move_operations
+enum	e_move_operations
 {
 	ADD,
 	SUBTRACT,
 	READ
 };
 
-char	is_only_node(t_node *node);
-char	is_only_two_nodes(t_node *first, t_node *second);
-int		count_nodes(t_stack *stack);
+char			is_only_node(t_node *node);
+char			is_only_two_nodes(t_node *first, t_node *second);
+int				count_nodes(t_stack *stack);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
@@ -45,9 +45,9 @@ int		count_nodes(t_stack *stack);
 ** Description: interface with changing how many moves have been done.
 */
 
-int	add_move_counter(void);
-int	subtract_move_counter(void);
-int	counter_interface(int operation, int value);
+int				add_move_counter(void);
+int				subtract_move_counter(void);
+int				counter_interface(int operation, int value);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
@@ -55,11 +55,11 @@ int	counter_interface(int operation, int value);
 ** Description: Handles the stack.
 */
 
-t_stack		*init_stack(void);
-t_node		*pop(t_stack *stack);
-void		insert_by_value(t_stack *stack, int value);
-void		insert_by_node(t_stack *stack, t_node *elem);
-void		free_stacks(t_stack *stack_a, t_stack *stack_b);
+t_stack			*init_stack(void);
+t_node			*pop(t_stack *stack);
+void			insert_by_value(t_stack *stack, int value);
+void			insert_by_node(t_stack *stack, t_node *elem);
+void			free_stack(t_stack *stack);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
@@ -73,10 +73,9 @@ t_binary_tree	*init_binary_node(int value);
 void			tree_insert(t_binary_tree *root, int value);
 int				cmp_stack_to_sorted_tree(t_stack *stack_a, t_binary_tree *root);
 int				tree_to_array(t_binary_tree *root, int **array);
-void			fill_array_with_tree(t_binary_tree *root, int *array, int *count);
+void			fill_array_with_tree(t_binary_tree *root, int *arr, int *count);
 void			init_rank(t_stack *stack_a, t_binary_tree *root);
 void			free_tree(t_binary_tree *root);
-
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
@@ -84,16 +83,25 @@ void			free_tree(t_binary_tree *root);
 ** Description: Move set for the list.
 */
 
-void	sa(t_stack *stack_a, t_stack *stack_b);
-void	sb(t_stack *stack_a, t_stack *stack_b);
-void	ss(t_stack *stack_a, t_stack *stack_b);
-void	pa(t_stack *stack_a, t_stack *stack_b);
-void	pb(t_stack *stack_a, t_stack *stack_b);
-void	ra(t_stack *stack_a, t_stack *stack_b);
-void	rb(t_stack *stack_a, t_stack *stack_b);
-void	rr(t_stack *stack_a, t_stack *stack_b);
-void	rra(t_stack *stack_a, t_stack *stack_b);
-void	rrb(t_stack *stack_a, t_stack *stack_b);
-void	rrr(t_stack *stack_a, t_stack *stack_b);
+void			sa(t_stack *stack_a, t_stack *stack_b);
+void			sb(t_stack *stack_a, t_stack *stack_b);
+void			ss(t_stack *stack_a, t_stack *stack_b);
+void			pa(t_stack *stack_a, t_stack *stack_b);
+void			pb(t_stack *stack_a, t_stack *stack_b);
+void			ra(t_stack *stack_a, t_stack *stack_b);
+void			rb(t_stack *stack_a, t_stack *stack_b);
+void			rr(t_stack *stack_a, t_stack *stack_b);
+void			rra(t_stack *stack_a, t_stack *stack_b);
+void			rrb(t_stack *stack_a, t_stack *stack_b);
+void			rrr(t_stack *stack_a, t_stack *stack_b);
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** FILE: buffer.c
+** Description: Prints out things in a buffer.
+*/
+
+void	buffer_output_str(char *str, int final);
+void	flush_buffer_str(void);
 
 #endif

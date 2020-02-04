@@ -6,14 +6,14 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 20:29:57 by xinu              #+#    #+#             */
-/*   Updated: 2020/01/30 01:55:35 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/02 07:40:16 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "common.h"
 #include <limits.h>
 
-int	is_digit(char c)
+int		is_digit(char c)
 {
 	if ('0' <= c && c <= '9')
 		return (1);
@@ -21,7 +21,7 @@ int	is_digit(char c)
 		return (0);
 }
 
-int	mini_atoi(char *str)
+int		mini_atoi(char *str)
 {
 	int		i;
 	int8_t	sign;

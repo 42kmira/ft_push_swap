@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 00:34:10 by kmira             #+#    #+#             */
-/*   Updated: 2020/02/01 17:28:38 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/03 23:53:23 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	do_commands(char *str, t_stack *stack_a, t_stack *stack_b)
 			rra(stack_a, stack_b);
 		}
 		else
-			printf("Error parsing the command string\n");
+			buffer_output_str("Error parsing the command string\n", 1);
 		i++;
 		i++;
 		if (str[i] == ' ')

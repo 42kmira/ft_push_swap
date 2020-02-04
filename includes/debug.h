@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:01:18 by xinu              #+#    #+#             */
-/*   Updated: 2020/01/24 15:20:43 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/03 00:02:47 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <string.h>
 # include <stdio.h>
 
-#define LOCKED_NODE 1
-#define UNLOCKED_NODE 0
+# define LOCKED_NODE 1
+# define UNLOCKED_NODE 0
 
 void	print_stack(t_stack *stack);
 void	print_stack_reverse(t_stack *stack);
