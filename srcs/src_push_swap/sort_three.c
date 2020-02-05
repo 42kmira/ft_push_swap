@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 00:34:10 by kmira             #+#    #+#             */
-/*   Updated: 2020/02/03 23:53:23 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/05 05:56:39 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,20 @@ void	sort_by_group_of_three(t_stack *stack_a, t_stack *stack_b)
 {
 	char	*commands;
 	int		order[2];
+	int		size;
 
-	local_rank_three(stack_a);
-	order[0] = (stack_a->head)->local_rank;
-	order[1] = ((stack_a->head)->next)->local_rank;
-	commands = fetch_command_sequence_alt(order);
-	do_commands(commands, stack_a, stack_b);
+	size = count_nodes(stack_a);
+	if (size >= 3)
+	{
+		local_rank_three(stack_a);
+		order[0] = (stack_a->head)->local_rank;
+		order[1] = ((stack_a->head)->next)->local_rank;
+		commands = fetch_command_sequence_alt(order);
+		do_commands(commands, stack_a, stack_b);
+	}
+	else if (size == 2)
+	{
+		if (stack_a->head->local_rank != 1)
+			ra(stack_a, stack_b);
+	}
 }

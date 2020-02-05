@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:40:43 by marvin            #+#    #+#             */
-/*   Updated: 2020/02/05 05:22:54 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/05 05:54:30 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,13 @@ int		main(int aa __attribute__((unused)), char **args)
 		tree_to_array(root, &sorted_array);
 		init_rank(stack_a, root);
 		status = cmp_stack_to_sorted_tree(stack_a, root);
-		while (status != LAST_SORT && status == STACK_NOT_SORTED)
-			status = lock_push(stack_a, stack_b);
-		sort_by_group_of_three(stack_a, stack_b);
-		start_merge(stack_a, stack_b);
+		if (status == STACK_NOT_SORTED)
+		{
+			while (status != LAST_SORT)
+				status = lock_push(stack_a, stack_b);
+			sort_by_group_of_three(stack_a, stack_b);
+			start_merge(stack_a, stack_b);
+		}
 		flush_buffer_str();
 		free_stack(stack_a);
 		free_stack(stack_b);
