@@ -6,11 +6,11 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 18:30:47 by kmira             #+#    #+#             */
-/*   Updated: 2020/02/01 17:19:21 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/05 05:21:34 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "common.h"
 
 void	traverse_both_structures(t_node **stack_node,
 								t_binary_tree **root, int *status)

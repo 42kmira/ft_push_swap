@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:58:35 by kmira             #+#    #+#             */
-/*   Updated: 2020/02/03 23:28:32 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/05 05:20:31 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,4 @@ void	start_merge(t_stack *stack_a, t_stack *stack_b)
 	else
 		while (stack_a->head->rank != 1)
 			ra(stack_a, stack_b);
-	// print_stacks_detail(stack_a, stack_b);
 }

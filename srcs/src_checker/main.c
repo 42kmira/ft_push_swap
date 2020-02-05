@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:40:40 by marvin            #+#    #+#             */
-/*   Updated: 2020/02/03 23:52:51 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/05 05:49:01 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ void	print_status(int status)
 	if (status != EMPTY_ARGS)
 	{
 		if (status == 1 && errno == 0)
-			buffer_output_str("OK\n", 0);
+			write(1, BOLDGREEN"OK\n"COLOR_RESET, 16);
 		else if (errno == 0)
-			buffer_output_str("KO\n", 0);
+			write(1, BOLDRED"KO\n"COLOR_RESET, 16);
 	}
-	flush_buffer_str();
 }
 
 int		main(int aa, char **args)
@@ -53,7 +52,7 @@ int		main(int aa, char **args)
 		stack_b = init_stack();
 		get_user_input(stack_a, stack_b);
 		if (errno == EINVAL)
-			write(STDERR_FILENO, "Error\n", 6);
+			write(STDERR_FILENO, RED"Error\n"COLOR_RESET, 15);
 		else
 			status = cmp_stack_to_sorted_tree(stack_a, root);
 		free_stack(stack_a);
@@ -61,6 +60,5 @@ int		main(int aa, char **args)
 		free_tree(root);
 	}
 	print_status(status);
-	system("leaks checker");
 	return (0);
 }

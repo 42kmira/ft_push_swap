@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:41:24 by marvin            #+#    #+#             */
-/*   Updated: 2020/02/01 17:18:40 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/05 05:21:44 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 # define OPS_READ_BUFFER 300
 # define EMPTY_ARGS 2
-# define STACK_SORTED 1
-# define STACK_NOT_SORTED -1
 
 typedef struct	s_operation
 {

@@ -6,7 +6,7 @@
 #    By: kmira <kmira@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/02 16:28:59 by marvin            #+#    #+#              #
-#    Updated: 2020/02/03 23:33:16 by kmira            ###   ########.fr        #
+#    Updated: 2020/02/05 05:21:19 by kmira            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ COMMON_SRCS = \
 		stack_ops \
 		input_to_stack \
 		tree_functions \
+		verify_checker \
 
 OPERATIONS_SRCS = \
 		operations_combined \
@@ -36,7 +37,6 @@ OPERATIONS_SRCS = \
 CHK_SRCS = \
 		input_checker_operations \
 		main \
-		verify_checker \
 
 PUSH_SWAP_SRCS = \
 		lock_sequence \
