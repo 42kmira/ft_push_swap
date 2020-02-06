@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 17:08:17 by kmira             #+#    #+#             */
-/*   Updated: 2020/02/05 22:40:54 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/06 10:03:55 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ int		partial_command_stored(char *str, char *buffer, int *i)
 			result = 1;
 		}
 		else
-		{
 			errno = EINVAL;
-		}
 	}
 	return (result);
 }

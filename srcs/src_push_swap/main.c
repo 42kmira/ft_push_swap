@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:40:43 by marvin            #+#    #+#             */
-/*   Updated: 2020/02/06 08:48:49 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/06 10:18:56 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,22 @@ int		lock_push(t_stack *stack_a, t_stack *stack_b)
 }
 
 void	free_structures(t_stack *stack_a, t_stack *stack_b,
-						t_binary_tree *root, int *sorted_array)
+						t_binary_tree *root)
 {
 	free_stack(stack_a);
 	free_stack(stack_b);
-	free(sorted_array);
 	free_tree(root);
-	flush_buffer_str();
+}
+
+void	sorting_process(t_stack *stack_a, t_stack *stack_b)
+{
+	int	status;
+
+	status = STACK_NOT_SORTED;
+	while (status != LAST_SORT)
+		status = lock_push(stack_a, stack_b);
+	sort_by_group_of_three(stack_a, stack_b);
+	start_merge(stack_a, stack_b);
 }
 
 int		main(int aa, char **args)
@@ -55,26 +64,23 @@ int		main(int aa, char **args)
 	t_stack			*stack_a;
 	t_stack			*stack_b;
 	t_binary_tree	*root;
-	int				*sorted_array;
 	int				status;
 
+	root = NULL;
+	stack_b = NULL;
 	stack_a = create_stack_a(args, &root, aa);
 	if ((errno & EINVAL) == 0 && aa > 1)
 	{
 		stack_b = init_stack();
-		tree_to_array(root, &sorted_array);
-		init_rank(stack_a, root);
 		status = cmp_stack_to_sorted_tree(stack_a, root);
+		init_rank(root);
+		fill_rank(stack_a, root);
 		if (status == STACK_NOT_SORTED)
-		{
-			while (status != LAST_SORT)
-				status = lock_push(stack_a, stack_b);
-			sort_by_group_of_three(stack_a, stack_b);
-			start_merge(stack_a, stack_b);
-		}
-		free_structures(stack_a, stack_b, root, sorted_array);
+			sorting_process(stack_a, stack_b);
+		flush_buffer_str();
 	}
 	else
 		write(1, RED"Error\n"COLOR_RESET, 15);
+	free_structures(stack_a, stack_b, root);
 	return (0);
 }
