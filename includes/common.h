@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:48:07 by marvin            #+#    #+#             */
-/*   Updated: 2020/02/05 22:11:50 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/06 08:48:23 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@
 # include "common_struct.h"
 # include "color.h"
 # include "libft.h"
-# include "debug.h"
 
 # define STACK_SORTED 1
 # define STACK_NOT_SORTED -1
+
+# define LOCKED_NODE 1
+# define UNLOCKED_NODE 0
 
 enum	e_move_operations
 {

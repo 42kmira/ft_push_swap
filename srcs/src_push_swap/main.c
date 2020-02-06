@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:40:43 by marvin            #+#    #+#             */
-/*   Updated: 2020/02/05 22:12:28 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/06 08:48:49 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	free_structures(t_stack *stack_a, t_stack *stack_b,
 	free_stack(stack_b);
 	free(sorted_array);
 	free_tree(root);
+	flush_buffer_str();
 }
 
 int		main(int aa, char **args)
@@ -72,10 +73,8 @@ int		main(int aa, char **args)
 			start_merge(stack_a, stack_b);
 		}
 		free_structures(stack_a, stack_b, root, sorted_array);
-		flush_buffer_str();
 	}
 	else
 		write(1, RED"Error\n"COLOR_RESET, 15);
-	// printf("OPS: %d\n", counter_interface(READ, 0));
 	return (0);
 }
