@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:48:07 by marvin            #+#    #+#             */
-/*   Updated: 2020/02/06 09:59:48 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/06 10:26:46 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ enum	e_move_operations
 	READ
 };
 
-char			is_only_node(t_node *node);
-char			is_only_two_nodes(t_node *first, t_node *second);
 int				count_nodes(t_stack *stack);
 
 /*
