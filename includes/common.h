@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:48:07 by marvin            #+#    #+#             */
-/*   Updated: 2020/02/05 05:21:51 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/05 22:11:50 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void			free_stack(t_stack *stack);
 ** Description: Transform program agruements into a stack_a.
 */
 
-t_stack			*create_stack_from_list(char **args, t_binary_tree **root);
+t_stack			*create_stack_a(char **args, t_binary_tree **root, int aa);
 void			print_tree(t_binary_tree *root);
 t_binary_tree	*init_binary_node(int value);
 void			tree_insert(t_binary_tree *root, int value);
@@ -104,7 +104,7 @@ void			rrr(t_stack *stack_a, t_stack *stack_b);
 ** Description: Prints out things in a buffer.
 */
 
-void	buffer_output_str(char *str, int final);
-void	flush_buffer_str(void);
+void			buffer_output_str(char *str, int final);
+void			flush_buffer_str(void);
 
 #endif

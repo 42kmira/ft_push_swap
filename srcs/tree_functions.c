@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:54:47 by kmira             #+#    #+#             */
-/*   Updated: 2020/02/02 07:45:22 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/05 06:00:48 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void			tree_insert(t_binary_tree *root, int value)
 
 void			free_tree(t_binary_tree *root)
 {
+	if (root == NULL)
+		return ;
 	if (root->left != NULL)
 		free_tree(root->left);
 	if (root->right != NULL)

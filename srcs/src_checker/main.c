@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:40:40 by marvin            #+#    #+#             */
-/*   Updated: 2020/02/05 05:49:01 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/05 22:11:26 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		main(int aa, char **args)
 		status = EMPTY_ARGS;
 	else
 	{
-		stack_a = create_stack_from_list(&args[1], &root);
+		stack_a = create_stack_a(args, &root, aa);
 		stack_b = init_stack();
 		get_user_input(stack_a, stack_b);
 		if (errno == EINVAL)

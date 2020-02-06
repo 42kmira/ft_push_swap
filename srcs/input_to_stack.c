@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 20:29:57 by xinu              #+#    #+#             */
-/*   Updated: 2020/02/02 07:40:16 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/05 22:17:52 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,52 @@ t_stack	*create_stack_from_list(char **args, t_binary_tree **root)
 		i--;
 	}
 	return (result);
+}
+
+int		has_multiple_nums(char *str)
+{
+	int		i;
+	int		result;
+
+	i = 0;
+	result = 0;
+	if (str[i] == '-')
+		i++;
+	while ('0' <= str[i] && str[i] <= '9')
+		i++;
+	if (str[i] == '\0')
+		result = 0;
+	else if (str[i] == ' ')
+		i++;
+	if (('0' <= str[i] && str[i] <= '9') || str[i] == '-')
+		result = 1;
+	return (result);
+}
+
+t_stack	*create_stack_a(char **args, t_binary_tree **root, int aa)
+{
+	t_stack	*stack_a;
+	char	**numbers;
+	int		numbers_need_free;
+	int		i;
+
+	numbers = &args[1];
+	numbers_need_free = 0;
+	if (aa == 2 && has_multiple_nums(args[1]) == 1)
+	{
+		numbers = ft_strsplit(args[1], ' ');
+		numbers_need_free = 1;
+	}
+	stack_a = create_stack_from_list(numbers, root);
+	if (numbers_need_free == 1)
+	{
+		i = 0;
+		while (numbers[i] != NULL)
+		{
+			free(numbers[i]);
+			i++;
+		}
+		free(numbers);
+	}
+	return (stack_a);
 }

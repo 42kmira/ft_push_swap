@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:40:43 by marvin            #+#    #+#             */
-/*   Updated: 2020/02/05 05:54:30 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/05 22:12:28 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,16 @@ int		lock_push(t_stack *stack_a, t_stack *stack_b)
 	return (0);
 }
 
-int		main(int aa __attribute__((unused)), char **args)
+void	free_structures(t_stack *stack_a, t_stack *stack_b,
+						t_binary_tree *root, int *sorted_array)
+{
+	free_stack(stack_a);
+	free_stack(stack_b);
+	free(sorted_array);
+	free_tree(root);
+}
+
+int		main(int aa, char **args)
 {
 	t_stack			*stack_a;
 	t_stack			*stack_b;
@@ -48,8 +57,8 @@ int		main(int aa __attribute__((unused)), char **args)
 	int				*sorted_array;
 	int				status;
 
-	stack_a = create_stack_from_list(&args[1], &root);
-	if ((errno & EINVAL) == 0)
+	stack_a = create_stack_a(args, &root, aa);
+	if ((errno & EINVAL) == 0 && aa > 1)
 	{
 		stack_b = init_stack();
 		tree_to_array(root, &sorted_array);
@@ -62,11 +71,11 @@ int		main(int aa __attribute__((unused)), char **args)
 			sort_by_group_of_three(stack_a, stack_b);
 			start_merge(stack_a, stack_b);
 		}
+		free_structures(stack_a, stack_b, root, sorted_array);
 		flush_buffer_str();
-		free_stack(stack_a);
-		free_stack(stack_b);
-		free_tree(root);
-		free(sorted_array);
 	}
+	else
+		write(1, RED"Error\n"COLOR_RESET, 15);
+	// printf("OPS: %d\n", counter_interface(READ, 0));
 	return (0);
 }

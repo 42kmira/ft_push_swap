@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 17:08:17 by kmira             #+#    #+#             */
-/*   Updated: 2020/02/05 05:50:26 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/05 22:40:54 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	do_command(t_operation *jump_table,
 	else
 		jump_table[i].operation(stack_a, stack_b);
 	ft_bzero(str, ft_strlen(str));
-
 }
 
 #define MAX_COMMAND_LEN 4
@@ -50,14 +49,17 @@ int		partial_command_stored(char *str, char *buffer, int *i)
 			result = 1;
 		}
 		else
+		{
 			errno = EINVAL;
+		}
 	}
 	return (result);
 }
 
 int		calc_addon(char *buffer, int i, char *str)
 {
-	int result;
+	int	result;
+	int	len;
 
 	result = -1;
 	if (buffer[i + 2] == '\n')
@@ -72,7 +74,11 @@ int		calc_addon(char *buffer, int i, char *str)
 	}
 	else
 	{
-		errno = EINVAL;
+		len = ft_strlen(&buffer[i]);
+		if (0 <= len && len <= MAX_COMMAND_LEN - 1)
+			ft_strncat(str, &buffer[i], len);
+		else
+			errno = EINVAL;
 	}
 	return (result);
 }
@@ -97,6 +103,8 @@ void	create_jump_table(t_operation *jump_table,
 			addon = calc_addon(buffer, i, temp);
 			if (addon != -1)
 				do_command(jump_table, stack_a, stack_b, temp);
+			else
+				break ;
 			i = i + addon;
 		}
 		ft_bzero(buffer, sizeof(buffer));

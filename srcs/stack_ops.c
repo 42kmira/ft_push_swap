@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:04:14 by kmira             #+#    #+#             */
-/*   Updated: 2020/02/03 00:33:01 by kmira            ###   ########.fr       */
+/*   Updated: 2020/02/05 06:00:32 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void	free_stack(t_stack *stack)
 	t_node	*iter;
 	t_node	*malloced_node;
 
+	if (stack == NULL)
+		return ;
 	if (stack->head != NULL)
 	{
 		malloced_node = stack->head;
