@@ -6,7 +6,7 @@
 #    By: kmira <kmira@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/02 16:28:59 by marvin            #+#    #+#              #
-#    Updated: 2020/02/06 08:55:37 by kmira            ###   ########.fr        #
+#    Updated: 2020/02/07 02:17:31 by kmira            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ clean:
 fclean: clean
 	@rm -rf $(NAME1)
 	@rm -rf $(NAME2)
-# make fclean -C srcs/libft/
+	make fclean -C srcs/libft/
 
 re: fclean all
 
